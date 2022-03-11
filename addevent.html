@@ -88,7 +88,7 @@
             <div class="row">
                 <div class="col-sm-5">
                     <div class="labels">
-                        <label for="rnumber">Fees for Members :</label>
+                        <label for="rnumber">Fees :</label>
                     </div>
                 </div>
                 <div class="col-sm-7">
@@ -98,20 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="spacer" style="height:50px;"></div>
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="labels">
-                        <label for="rnumber">Fees for Non-members :</label>
-                    </div>
-                </div>
-                <div class="col-sm-7">
-                    <div class="texts">
-                        <label for="appt">&#8377;</label>
-                        <input type="text" id="title" name="title" placeholder="Fees for Non-members" required>
-                    </div>
-                </div>
-            </div>
+           
             <div class="spacer" style="height:40px;"></div>
             <div id="speaker">
                 <div class="row">
@@ -126,6 +113,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="spacer" style="height:40px;"></div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="labels">
+                            <label for="banner-img"> Speaker Designition : </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="texts">
+                            <input type="text" id="title" name="title" placeholder="Speaker Name" required>
+                        </div>
+                    </div>
+                    </div>
                 <div class="spacer" style="height:40px;"></div>
                 <div class="row">
                     <div class="col-sm-5">
@@ -159,27 +159,9 @@
             Hello
         </div>
         <div class="spacer" style="height:40px;"></div>
-        <button onclick="Disappear()" class="btn btn-primary" id="speaker_nospeaker">No Speaker</button>
         <button type="button" class="btn btn-primary">Sumbit</button>
         <div class="spacer" style="height:40px;"></div>
-        <script>
-            function Disappear() {
-                var x = document.getElementById("speaker");
-                var y = document.getElementById("no_speaker");
-                var element = document.getElementById("speaker_nospeaker");
-                if (x.style.display === "none") {
-                    x.style.display = "block";
-                    element.innerHTML = "No Speaker";
-                    y.style.display = "none";
-                } else {
-                    x.style.display = "none";
-                    element.innerHTML = "Speaker";
-                    y.style.display = "block";
-                }
-            }
-            var no_speaker = document.getElementById("no_speaker");
-            no_speaker.style.display = "none";
-        </script>
+       
         <div class="footer">
             <div class="spacer" style="height:2px;"></div>
             <a href="index.html"><i class="fas fa-home"></i></a>
