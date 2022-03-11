@@ -1,0 +1,37 @@
+body {
+    text-align:center;
+    background-color: whitesmoke;
+    
+    font-family:'Times New Roman', Times, serif;
+    margin: 0;
+    color: white;
+    padding: 0;
+    color: black;
+}
+header
+{
+    color: black;
+    background-color: aquamarine;
+    padding: 10px;
+}
+.registration
+{
+    text-align: start;
+}
+.labels
+{
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.footer
+{
+	text-align: center;
+  background-color:#569eeca6;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+ 
+}
+
