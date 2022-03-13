@@ -20,7 +20,6 @@
 
 <body>
 
-<?php echo $_SESSION['email'] ?>
 	<!-- Loader -->
 	<div class="preloader">
 		<div class="loader"></div>
@@ -70,10 +69,6 @@
 						<?php
 						} 
 						?>
-						
-
-			
-
 			</ul>
 			<ul class="navbar-nav ml-auto nav-flex-icons">
 				<li class="nav-item">
@@ -424,6 +419,7 @@
 
 				<?php
 				if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['contactUs'])) {
+					$_POST['contactUs']=null;
 					unset($_POST['contactUs']);
 					if (isset($_SESSION['email'])) {
 						$email = $_SESSION['email'];
@@ -454,7 +450,6 @@
 							<h2>Contact Us</h2>
 
 							<?php
-							$_SESSION['email'] = null;
 							if (!isset($_SESSION['email'])) {
 							?>
 
