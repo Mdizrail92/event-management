@@ -69,9 +69,14 @@
 						<i class="fas fa-user"></i>
 					</a>
 					<div class="dropdown-menu  dropdown-default dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="login.html">Login</a>
-						<a class="dropdown-item" href="signup.html">Sign up</a>
-
+						<?php
+						if (isset($_SESSION['email'])) {
+							echo '<a class="dropdown-item" href="logout.php">Log Out</a>';
+						} else {
+						?>
+							<a class="dropdown-item" href="login.php">Login</a>
+							<a class="dropdown-item" href="signup.php">Sign up</a>
+						<?php } ?>
 					</div>
 				</li>
 			</ul>
@@ -130,85 +135,37 @@
 				<h1>
 					Events
 				</h1>
-
-
-
-
 			</div>
-
 			<hr class="line1">
 			<div class="spacer" style="height:30px;"></div>
-			<div class="row">
-
-				<div class="col-sm-4 date">
-					<br>
-					<p>
-						20 December 2019
-					</p>
+			<?php
+			$sql = "SELECT * FROM `event` ORDER BY `date` DESC";
+			$result = mysqli_query($conn, $sql);
+			while ($row = mysqli_fetch_assoc($result)) {
+			?>
+				<div class="row">
+					<div class="col-sm-4 date">
+						<br>
+						<p>
+							<?php
+							$date = strtotime($row['date']);
+							echo date('j F Y', $date); ?>
+						</p>
+					</div>
+					<div class="col-sm-8 event-details">
+						<?php echo $row['id']; ?>
+						<a href="event.php?id=<?php echo $row['id'] ?>">
+							<h2>
+								<?php echo $row['title']; ?>
+							</h2>
+						</a>
+						<br>
+						<p><?php echo $row['description']; ?></p>
+					</div>
 				</div>
-				<div class="col-sm-8 event-details">
-					<a href="event.html">
-						<h2>
-							CSI-SAKEC Outbound
-						</h2>
-					</a>
-					<br>
-					<p>Introduction to IoT, Basics of NodeMCU, Configuring LEDs with NodeMCU, using different sensors like DHT11, LDRs, IRs & IR-Remote, NodeMCU as a Server & Google Assistant using NodeMCU. </p>
-				</div>
-
-			</div>
-			<div class="row">
-				<div class="col-sm-4 date">
-					<br>
-					<p>
-						11 March 2020
-					</p>
-				</div>
-				<div class="col-sm-8 event-details">
-					<a href="event1.html">
-						<h2>
-							Getting Started with Bg Bounty
-						</h2>
-					</a><br>
-					<p>
-						What Bug Bounty is? , CSRF - Cross Site Request Forge, Resources required to get started in Bug Bounty, Various examples of how bug bounty is done .The event ended with an encouraging speech by Dr. Rekha Ramesh – Professor at the Department of Computer Engineering of Shah and Anchor Kutchhi Engineering College. </p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4 date">
-					<br>
-					<p>
-						30-31 August 2019
-					</p>
-				</div>
-				<div class="col-sm-8 event-details">
-					<a href="event.html">
-						<h2>
-							World of IOT
-						</h2>
-					</a><br>
-					<p>
-						Introduction to IoT, Basics of NodeMCU, Configuring LEDs with NodeMCU, using different sensors like DHT11, LDRs, IRs & IR-Remote, NodeMCU as a Server & Google Assistant using NodeMCU. </p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4 date">
-					<br>
-					<p>
-						12-14 October 2020
-					</p>
-				</div>
-				<div class="col-sm-8 event-details">
-					<a href="event3.html">
-						<h2>
-							Django Workshop
-						</h2>
-					</a><br>
-					<p>
-						Introduction Django, Basics of Python, Configuring frameworks with Django, using different sensors like DHT11, LDRs, IRs & IR-Remote, NodeMCU as a Server & Google Assistant using NodeMCU.
-					</p>
-				</div>
-			</div>
+			<?php
+			}
+			?>
 		</div>
 	</div>
 

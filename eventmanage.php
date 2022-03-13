@@ -20,7 +20,7 @@
     <?php
     if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['delete'])) {
         $id = $_POST['id'];
-        $sql = "DELETE FROM event WHERE id='$id'x";
+        $sql = "DELETE FROM event WHERE id='$id'";
         $result = mysqli_query($conn, $sql);
         if ($result) {
             echo "<script>alert('Event Deleted Successfully');</script>";
@@ -44,7 +44,6 @@
         <thead class="black white-text">
             <tr>
                 <th scope="col">Title</th>
-
                 <th>Event date</th>
                 <th>Event time</th>
                 <th>Event Description</th>
@@ -56,7 +55,7 @@
         </thead>
         <tbody>
             <?php
-            $sql = "SELECT * FROM `event` ORDER BY `date` DESC;";
+            $sql = "SELECT * FROM `event` ORDER BY `date` DESC";
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
@@ -67,8 +66,7 @@
                         <td><?php echo $row['from_time']; ?></td>
                         <td>
                             <div id="summary">
-                                <p class="collapse" id="collapseSummary">
-                                    <?php echo $row['description']; ?> </p>
+                                <p class="collapse" id="collapseSummary"><?php echo $row['description']; ?> </p>
                                 <a class="collapsed" data-toggle="collapse" href="#collapseSummary" aria-expanded="false" aria-controls="collapseSummary"></a>
                             </div>
                         </td>

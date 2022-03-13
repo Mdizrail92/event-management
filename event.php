@@ -23,39 +23,26 @@ require_once 'requirements.php';
 <body>
 
 <?php
+  $id=$_GET['id'];
+if(!isset($_GET['id'])){
+  RedirectAfterMsg('Invalid Event Id','index.php');
+  die();
+}
   // fetching from event table
-  $sql = 'SELECT * FROM `event` WHERE `id`= 1';
+  $sql = "SELECT * FROM `event` WHERE `id`='$id'";
   $query = mysqli_query($conn, $sql);
   if (!mysqli_num_rows($query)) {
     echo '<h3>No Records Found</h3>';
   } else {
     $event_row = mysqli_fetch_assoc($query);
   }
-
   ?>
-
-
-<?php
-            // fetching from coordinator table
-  $sql = 'SELECT * FROM `ipr_event_coordinator` WHERE `event_id`= 1';
-  $query = mysqli_query($conn, $sql);
-  if (!mysqli_num_rows($query)) {
-    echo '<h3>No Records Found</h3>';
-  } else {
-    $cordinator_row = mysqli_fetch_assoc($query);
-   }
-
-?>
-
-
-
-
 
 	<div class="spacer" style="height:20px;"></div>
     <div class="container ">
             <h1 ><?php echo $event_row['title']; ?></h1>
             <div class="spacer" style="height:20px;"></div>
-<img class="main-img" src="images/event-main.jpg" alt="">
+<img class="main-img" src="images/<?php echo $event_row['banner'];?>" alt="">
 <div class="spacer" style="height:35px;"></div>
 
 <div class="event-header">
@@ -64,7 +51,7 @@ require_once 'requirements.php';
 <h1><?php echo $event_row['title']; ?></h1>
 <h4><span style="color: #a10f95;"><?php echo $event_row['date']; ?> <span style="color: rgb(173, 173, 0);"><?php echo $event_row['from_time']; ?></span> to <span style="color: rgb(173, 173, 0);"><?php echo $event_row['to_time']; ?></span></h4>
 <div class="spacer" style="height:20px;"></div>
-<a href="" action="" type="button" class="btn btn-primary">Register Now</a>
+<a href="<?php echo $event_row['registration_link'] ?>" action="" type="button" class="btn btn-primary">Register Now</a>
 
 
 <div class="spacer" style="height:40px;"></div>
@@ -108,7 +95,7 @@ require_once 'requirements.php';
 
     <!-- Card image -->
     <div class="view view-cascade overlay">
-      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/men.jpg" alt="Card image cap">
+      <img class="card-img-top" src="images/<?php echo $event_row['speaker_img'];?>" alt="Card image cap">
       <a>
         <div class="mask rgba-white-slight"></div>
       </a>

@@ -15,37 +15,33 @@ require_once 'requirements.php';
 ?>
 <body>
     
-
-
       <!-- sinUp PHP starts here -->
       <?php
       if (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['signup'])) {
           //optionally checking all the input fields are not empty because html can get manipulated
           unset($_POST['signup']);
-          if (!(empty($_POST['lname']) || empty($_POST['fname']) || empty($_POST['mname'])) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['confirmPassword'])) {
-              $name = $_POST['lname'] . " " . $_POST['fname'] . " " . $_POST['mname'] . " ";
+          if (!(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['confirmPassword']))) {
+              $name = $_POST['name'];
               $email = $_POST['email'];
-              $sql = "SELECT * FROM `ipr_users` WHERE `email_id`='$email'";
+              $sql = "SELECT * FROM `users` WHERE `email`='$email'";
               $result = mysqli_query($conn, $sql);
               $count = mysqli_num_rows($result);
               if (!$count) {
                   $password = $_POST['password'];
                   $confirmPassword = $_POST['confirmPassword'];
                   if ($password == $confirmPassword) {
-                      $department = $_POST['department'];
-                      $role = (preg_match('#sakec.ac.in$#', $email)) ? '2' : '3';
-                      $regNo = (preg_match('#sakec.ac.in$#', $email)) ? $_POST['regNo'] : 'NULL';
                       // insert into database
-                      $sql = "INSERT INTO `ipr_users` (`name`, `email_id`, `password`, `department`, `role`, `reg_no`) VALUES ('$name','$email','$password','$department','$role','$regNo')";
+                      $sql = "INSERT INTO `users`(`name`, `password`, `email`)
+                                         VALUES ('$name','$password','$email')";
                       $result = mysqli_query($conn, $sql);
                       if ($result) {
                           echo "<div class='alert alert-danger'>
               <strong>Success!</strong> You have been registered successfully.
               </div>";
-                          Notify("You have been registered successfully.");
+                          RedirectAfterMsg("You have been registered successfully.",'index.php');
                       } else {
                           echo "<div class='alert alert-danger'>
-              <strong>Error!</strong> You have not been registered successfully.
+              <strong>Error!</strong> Some Error Occured
               </div>";
                       }
                   } else {
@@ -77,34 +73,29 @@ require_once 'requirements.php';
 	<div class="spacer" style="height:50px;"></div>
     <div id="user-login">
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
-        <p class="login"><b>WELCOME !</b></p> <!-- </br></br><i class="fas fa-user-circle" style="font-size:80px;"></i></p></br> -->
-       
+        <p class="login"><b>WELCOME !</b></p> 
             <div class="spacer" style="height:30px;"></div>
            
          <i class="fas fa-file-signature" style="font-size:30px;"></i>
          <input name="name" data-toggle="tooltip" data-placement="bottom" title="Your name" id="text" type="text" class="g" placeholder="Name" required/></br>
          
-        <i class="fas fa-signature" style="font-size:30px;"></i>
-        <input name="username" data-toggle="tooltip" data-placement="bottom" title="Your username" id="text" type="text" class="g"  placeholder="Username" required/></br>
-      
- 
-
         <i class="far fa-envelope" style="font-size:30px;"></i>
         <input name="email" data-toggle="tooltip" data-placement="bottom" title="Type your email" id="text" type="text" class="g" placeholder=" Email" required/></br>
-     
-     
-       
        
         <i class="fas fa-lock" style="font-size:30px;"></i>
         <input name="password" data-toggle="tooltip" data-placement="bottom"   title="8 characters minimum" id="pass" type="password" class="g" placeholder=" Create Password" required/></br>
-
+        
+        <i class="fas fa-lock" style="font-size:30px;"></i>
+        <input name="confirmPassword" data-toggle="tooltip" data-placement="bottom"   title="8 characters minimum" id="pass" type="password" class="g" placeholder=" Create Password" required/></br>
+        
         <!-- <input class="me" type="checkbox">Remember me</br> -->
-        <button class="btn btn-primary"><a href="">Sign Up</a> <i class="fas fa-user-plus "></i></button></br></br>
-<p>Existing User <a style="color: rgb(168, 192, 212)"; href="login.html">Login</a></p>
+        <button class="btn btn-primary" name="signup">Sign Up <i class="fas fa-user-plus "></i></button></br></br>
+    </form>
+
+<p>Existing User <a style="color: rgb(168, 192, 212)"; href="login.php">Login</a></p>
 <div class="spacer" style="height:30px;"></div>
     </div>
     </div>
-</form>
 
     
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
