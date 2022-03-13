@@ -109,6 +109,7 @@ header
 	padding: 230px 0px;
 	background-image: linear-gradient(rgba(0, 0, 90, 0), rgba(0, 0, 0, 0.4)), url(../images/hologram.jpg);
 	background-size: cover;
+	height: 100vh;
 	background-position: center;
 	color: rgb(170, 170, 170);
 	text-align: center;

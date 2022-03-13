@@ -36,7 +36,7 @@ require_once 'requirements.php';
                     $rows = mysqli_fetch_assoc($query);
                     if ($rows['password'] == $password) {
                         $_SESSION['email'] = $username;
-                        $_SESSION['user_name'] = $rows['name'];
+                        $_SESSION['name'] = $rows['name'];
                         RedirectAfterMsg('Login Successfull', 'index.php');
                     } else {
                         echo "<div class='alert alert-danger'>

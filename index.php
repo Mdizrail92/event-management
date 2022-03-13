@@ -11,7 +11,7 @@
 
 
 	<link rel="stylesheet" href="css/style.css">
-	<title>CSI-SAKEC</title>
+	<title>EVENT-MANAGEMENT</title>
 
 	<?php
 	require_once 'requirements.php';
@@ -19,6 +19,8 @@
 </head>
 
 <body>
+
+<?php echo $_SESSION['email'] ?>
 	<!-- Loader -->
 	<div class="preloader">
 		<div class="loader"></div>
@@ -51,6 +53,26 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#contact">Contact Us</a>
 				</li>
+			
+				<?php
+						if (isset($_SESSION['email']) &&  $_SESSION['email']=="admin@gmail.com") {
+							?>
+<li class="nav-item">
+					<a class="nav-link" href="addevent.php">add Event</a>
+				</li>
+<li class="nav-item">
+					<a class="nav-link" href="eventmanage.php">Manage Event</a>
+				</li>
+<li class="nav-item">
+					<a class="nav-link" href="query.php">Student Query</a>
+				</li>
+			
+						<?php
+						} 
+						?>
+						
+
+			
 
 			</ul>
 			<ul class="navbar-nav ml-auto nav-flex-icons">
@@ -89,7 +111,7 @@
 
 		<div id="home">
 			<img class="rolling" src="images/logo.jpeg" alt="">
-			<h3>Event Management System</h3>
+			<h1>Event Management System</h1>
 
 
 		</div>
@@ -110,7 +132,7 @@
 			<div class="spacer" style="height:60px;"></div>
 			<div class="row">
 				<div class="col-sm-6">
-					<img class="aboutus" src="images/about.png" alt="">
+					<img class="aboutus" src="./images/about-us.webp" alt="">
 				</div>
 				<div class="col-sm-6">
 					<div class="spacer" style="height:20px;"></div>
@@ -192,9 +214,9 @@
 				<!-- Grid column -->
 				<div class="col-md-4 mb-md-0 mb-5">
 					<div class="avatar mx-auto">
-						<img src="images/Dhruvi-jain.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
+						<img src="images/teams1.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
 					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Dhruvi Jain</h4>
+					<h4 class="font-weight-bold dark-grey-text my-4">Rahu;l jain</h4>
 					<h6 class="text-uppercase grey-text mb-3"><strong>GENERAL SECRETARY</strong></h6>
 					<!-- Facebook-->
 					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-fb">
@@ -215,9 +237,9 @@
 				<!-- Grid column -->
 				<div class="col-md-4 mb-md-0 mb-5">
 					<div class="avatar mx-auto">
-						<img src="images/Yukta Lapsiya.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
+						<img src="images/teams2.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
 					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Yukta Lapsiya</h4>
+					<h4 class="font-weight-bold dark-grey-text my-4">Divya Thakur</h4>
 					<h6 class="text-uppercase grey-text mb-3"><strong>GENERAL COORDINATOR</strong></h6>
 					<!--Email-->
 					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-email">
@@ -237,9 +259,9 @@
 				<!-- Grid column -->
 				<div class="col-md-4">
 					<div class="avatar mx-auto">
-						<img src="images/Pratik-upadhyaya.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
+						<img src="images/teams3.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
 					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Pratik upadhyay</h4>
+					<h4 class="font-weight-bold dark-grey-text my-4">Pratik Gandhi</h4>
 					<h6 class="text-uppercase grey-text mb-3"><strong>STUDENT COORDINATOR</strong></h6>
 					<!--Linkedin -->
 					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-li">
@@ -256,345 +278,15 @@
 				</div>
 				<!-- Grid column -->
 
+		
 			</div>
-			<!-- Grid row -->
-
-
-			<div class="spacer" style="height:120px;"></div>
-
-			<div class="row text-center">
-
-				<!-- Grid column -->
-				<div class="col-md-4 mb-md-0 mb-5">
-					<div class="avatar mx-auto">
-						<img src="images/Aagam-sheth.jpeg" class="rounded z-depth-1-half" alt="Sample avatar">
-					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Aagam Sheth</h4>
-					<h6 class="text-uppercase grey-text mb-3"><strong>Events Team Head</strong></h6>
-
-					<!-- Facebook-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-fb">
-						<img class="social" src="images/instagram.png" alt="instagram">
-
-					</a>
-					<!--Dribbble -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-dribbble">
-						<img class="social" src="images/linkedin1.png" alt="facebook">
-					</a>
-					<!-- Twitter -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-tw">
-						<img class="social" src="images/twitter.png" alt="twitter">
-					</a>
-				</div>
-				<!-- Grid column -->
-
-				<!-- Grid column -->
-				<div class="col-md-4 mb-md-0 mb-5">
-					<div class="avatar mx-auto">
-						<img src="images/Krutik-patel.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
-					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Krutik Patel</h4>
-					<h6 class="text-uppercase grey-text mb-3"><strong>EVENTS TEAM CO-HEAD</strong></h6>
-					<!--Email-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-email">
-						<img class="social" src="images/instagram.png" alt="instagram">
-					</a>
-					<!-- Facebook-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-fb">
-						<img class="social" src="images/linkedin1.png" alt="facebook">
-					</a>
-					<!-- GitHub-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-git">
-						<img class="social" src="images/twitter.png" alt="twitter">
-					</a>
-				</div>
-				<!-- Grid column -->
-
-				<!-- Grid column -->
-				<div class="col-md-4">
-					<div class="avatar mx-auto">
-						<img src="images/Preet-karia.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
-					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Preet Karia</h4>
-					<h6 class="text-uppercase grey-text mb-3"><strong>TECHNICAL TEAM HEAD</strong></h6>
-					<!--Linkedin -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-li">
-						<img class="social" src="images/instagram.png" alt="instagram">
-					</a>
-					<!-- Twitter -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-tw">
-						<img class="social" src="images/linkedin1.png" alt="facebook">
-					</a>
-					<!--Pinterest -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-pin">
-						<img class="social" src="images/twitter.png" alt="twitter">
-					</a>
-				</div>
-				<!-- Grid column -->
-
-			</div>
-			<div class="spacer" style="height:120px;"></div>
-
-
-			<!-- Grid row -->
-			<div class="row text-center">
-
-				<!-- Grid column -->
-				<div class="col-md-4 mb-md-0 mb-5">
-					<div class="avatar mx-auto">
-						<img src="images/Rutvik-dashpande.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
-					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Rutvik Deshpande</h4>
-					<h6 class="text-uppercase grey-text mb-3"><strong>technical team CO-HEAD</strong></h6>
-					<!-- Facebook-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-fb">
-						<img class="social" src="images/instagram.png" alt="instagram">
-
-					</a>
-					<!--Dribbble -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-dribbble">
-						<img class="social" src="images/linkedin1.png" alt="facebook">
-					</a>
-					<!-- Twitter -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-tw">
-						<img class="social" src="images/twitter.png" alt="twitter">
-					</a>
-				</div>
-				<!-- Grid column -->
-
-				<!-- Grid column -->
-				<div class="col-md-4 mb-md-0 mb-5">
-					<div class="avatar mx-auto">
-						<img src="images/Ritik Mahajan.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
-					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Ritik Mahajan</h4>
-					<h6 class="text-uppercase grey-text mb-3"><strong>publicity team head</strong></h6>
-					<!--Email-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-email">
-						<img class="social" src="images/instagram.png" alt="instagram">
-					</a>
-					<!-- Facebook-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-fb">
-						<img class="social" src="images/linkedin1.png" alt="facebook">
-					</a>
-					<!-- GitHub-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-git">
-						<img class="social" src="images/twitter.png" alt="twitter">
-					</a>
-				</div>
-				<!-- Grid column -->
-
-				<!-- Grid column -->
-				<div class="col-md-4">
-					<div class="avatar mx-auto">
-						<img src="images/Ridhhi-dagha.jpeg" class="rounded z-depth-1-half" alt="Sample avatar">
-					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Ridhi Dagha</h4>
-					<h6 class="text-uppercase grey-text mb-3"><strong>REGISTRATION AND TREASURE TEAM treasurer</strong></h6>
-					<!--Linkedin -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-li">
-						<img class="social" src="images/instagram.png" alt="instagram">
-					</a>
-					<!-- Twitter -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-tw">
-						<img class="social" src="images/linkedin1.png" alt="facebook">
-					</a>
-					<!--Pinterest -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-pin">
-						<img class="social" src="images/twitter.png" alt="twitter">
-					</a>
-				</div>
-				<!-- Grid column -->
-
-			</div>
-			<!-- Grid row -->
-
-
-			<div class="spacer" style="height:120px;"></div>
-			<!-- Grid row -->
-			<div class="row text-center">
-
-				<!-- Grid column -->
-				<div class="col-md-4 mb-md-0 mb-5">
-					<div class="avatar mx-auto">
-						<img src="images/Shalini-gund.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
-					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Shalin Gund</h4>
-					<h6 class="text-uppercase grey-text mb-3"><strong>REGISTRATION AND TREASURE TEAM head1</strong></h6>
-					<!-- Facebook-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-fb">
-						<img class="social" src="images/instagram.png" alt="instagram">
-
-					</a>
-					<!--Dribbble -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-dribbble">
-						<img class="social" src="images/linkedin1.png" alt="facebook">
-					</a>
-					<!-- Twitter -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-tw">
-						<img class="social" src="images/twitter.png" alt="twitter">
-					</a>
-				</div>
-				<!-- Grid column -->
-
-				<!-- Grid column -->
-				<div class="col-md-4 mb-md-0 mb-5">
-					<div class="avatar mx-auto">
-						<img src="images/Simran-jindal.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
-					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Simran Jindal</h4>
-					<h6 class="text-uppercase grey-text mb-3"><strong>REGISTRATION AND TREASURE TEAM head1</strong></h6>
-					<!--Email-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-email">
-						<img class="social" src="images/instagram.png" alt="instagram">
-					</a>
-					<!-- Facebook-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-fb">
-						<img class="social" src="images/linkedin1.png" alt="facebook">
-					</a>
-					<!-- GitHub-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-git">
-						<img class="social" src="images/twitter.png" alt="twitter">
-					</a>
-				</div>
-				<!-- Grid column -->
-
-				<!-- Grid column -->
-				<div class="col-md-4">
-					<div class="avatar mx-auto">
-						<img src="images/Zarana-desai.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
-					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Zarana Desai</h4>
-					<h6 class="text-uppercase grey-text mb-3"><strong>Documentation team head</strong></h6>
-					<!--Linkedin -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-li">
-						<img class="social" src="images/instagram.png" alt="instagram">
-					</a>
-					<!-- Twitter -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-tw">
-						<img class="social" src="images/linkedin1.png" alt="facebook">
-					</a>
-					<!--Pinterest -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-pin">
-						<img class="social" src="images/twitter.png" alt="twitter">
-					</a>
-				</div>
-				<!-- Grid column -->
-
-			</div>
-			<!-- Grid row -->
-
-
-			<div class="spacer" style="height:120px;"></div>
-			<!-- Grid row -->
-			<div class="row text-center">
-
-				<!-- Grid column -->
-				<div class="col-md-4 mb-md-0 mb-5">
-					<div class="avatar mx-auto">
-						<img src="images/Parth-panchal.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
-					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Parth Panchal</h4>
-					<h6 class="text-uppercase grey-text mb-3"><strong>design team head1</strong></h6>
-					<!-- Facebook-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-fb">
-						<img class="social" src="images/instagram.png" alt="instagram">
-
-					</a>
-					<!--Dribbble -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-dribbble">
-						<img class="social" src="images/linkedin1.png" alt="facebook">
-					</a>
-					<!-- Twitter -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-tw">
-						<img class="social" src="images/twitter.png" alt="twitter">
-					</a>
-				</div>
-				<!-- Grid column -->
-
-				<!-- Grid column -->
-				<div class="col-md-4 mb-md-0 mb-5">
-					<div class="avatar mx-auto">
-						<img src="images/Atharva Juikar.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
-					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Atharva Juikar</h4>
-					<h6 class="text-uppercase grey-text mb-3"><strong>design team head2</strong></h6>
-					<!--Email-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-email">
-						<img class="social" src="images/instagram.png" alt="instagram">
-					</a>
-					<!-- Facebook-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-fb">
-						<img class="social" src="images/linkedin1.png" alt="facebook">
-					</a>
-					<!-- GitHub-->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-git">
-						<img class="social" src="images/twitter.png" alt="twitter">
-					</a>
-				</div>
-				<!-- Grid column -->
-
-				<!-- Grid column -->
-				<div class="col-md-4">
-					<div class="avatar mx-auto">
-						<img src="images/Bhavika-salshingikar.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
-					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Bhavika Salshingikar</h4>
-					<h6 class="text-uppercase grey-text mb-3"><strong>Design team co-head1</strong></h6>
-					<!--Linkedin -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-li">
-						<img class="social" src="images/instagram.png" alt="instagram">
-					</a>
-					<!-- Twitter -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-tw">
-						<img class="social" src="images/linkedin1.png" alt="facebook">
-					</a>
-					<!--Pinterest -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-pin">
-						<img class="social" src="images/twitter.png" alt="twitter">
-					</a>
-				</div>
-				<!-- Grid column -->
-
-			</div>
-			<!-- Grid row -->
-			<div class="spacer" style="height:120px;"></div>
-			<div class="row">
-				<div class="col-sm-4"></div>
-				<!-- Grid column -->
-				<div class="col-md-4">
-					<div class="avatar mx-auto">
-						<img src="images/Ritika-boricha.jpg" class="rounded z-depth-1-half" alt="Sample avatar">
-					</div>
-					<h4 class="font-weight-bold dark-grey-text my-4">Ritika Boricha</h4>
-					<h6 class="text-uppercase grey-text mb-3"><strong>Design team co-head2</strong></h6>
-					<!--Linkedin -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-li">
-						<img class="social" src="images/instagram.png" alt="instagram">
-					</a>
-					<!-- Twitter -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-tw">
-						<img class="social" src="images/linkedin1.png" alt="facebook">
-					</a>
-					<!--Pinterest -->
-					<a type="button" class="btn-floating btn-sm mx-1 mb-0 btn-pin">
-						<img class="social" src="images/twitter.png" alt="twitter">
-					</a>
-				</div>
-				<!-- Grid column -->
-				<div class="col-sm-4"></div>
-			</div>
-			<div class="spacer" style="height:90px;"></div>
-
-
-
 
 
 		</section>
 		<!-- Section: Team v.2 -->
 	</div>
 
-
+	<div class="spacer" style="height:90px;"></div>
 
 
 	<!-- Gallery -->
@@ -617,17 +309,15 @@
 						</ol>
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<img class="d-block w-100" src="images/gal-4.jpg" alt="First slide">
+								<img class="d-block w-100" src="images/gal-1.jpg" alt="First slide">
 							</div>
 							<div class="carousel-item">
 								<img class="d-block w-100" src="images/gal-2.jpg" alt="Second slide">
 							</div>
 							<div class="carousel-item">
-								<img class="d-block w-100" src="images/gal-3.jpg" alt="Third slide">
+								<img class="d-block w-100" src="images/gal-4.jpg" alt="Third slide">
 							</div>
-							<div class="carousel-item">
-								<img class="d-block w-100" src="images/gal-1.jpg" alt="ourth slide">
-							</div>
+							
 						</div>
 						<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -669,7 +359,7 @@
 								Important Links
 							</h4>
 							<ul class="list-group list-group-flush">
-								<a class="list-group-item list-group-item-action" href="#">SAKEC</a>
+								<a class="list-group-item list-group-item-action" href="#">SAINATH</a>
 								<a class="list-group-item list-group-item-action" href="#gallery">Gallery</a>
 								<a class="list-group-item list-group-item-action" href="#events">Events</a>
 								<a class="list-group-item list-group-item-action" href="#ourteam">Our Team</a>
@@ -790,7 +480,7 @@
 			<div class="spacer" style="height:2px;"></div>
 			<a href="#home"><i class="fas fa-home"></i></a>
 			<div class="spacer" style="height:0px;"></div>
-			<h5>Copyright &copy; CSI-SAKEC 2020-21 All Rights Reserved</h5>
+			<h5>Copyright &copy; Event-Management 2022-23 All Rights Reserved</h5>
 			<div class="spacer" style="height:1px;"></div>
 
 		</div>

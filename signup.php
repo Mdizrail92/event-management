@@ -35,7 +35,9 @@ require_once 'requirements.php';
                                          VALUES ('$name','$password','$email')";
                       $result = mysqli_query($conn, $sql);
                       if ($result) {
-                          echo "<div class='alert alert-danger'>
+                        $_SESSION['email'] = $email;
+                        $_SESSION['name'] = $name;
+                          echo "<div class='alert alert-success'>
               <strong>Success!</strong> You have been registered successfully.
               </div>";
                           RedirectAfterMsg("You have been registered successfully.",'index.php');

@@ -26,7 +26,6 @@ require_once 'requirements.php';
   $id=$_GET['id'];
 if(!isset($_GET['id'])){
   RedirectAfterMsg('Invalid Event Id','index.php');
-  die();
 }
   // fetching from event table
   $sql = "SELECT * FROM `event` WHERE `id`='$id'";
