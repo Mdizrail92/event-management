@@ -13,7 +13,7 @@ define('database','event-management');
 $conn = mysqli_connect(hostname, username, password, database);
 
 if (!$conn) {
-  Notify("Database connectivity failed contat admin");
+  Notify("Database connectivity failed contact admin");
   die();
 }
 
@@ -27,5 +27,13 @@ function Notify($message)
   echo "<SCRIPT>
         alert('$message');
     </SCRIPT>";
+}
+
+
+//To redirect user after the msg
+function RedirectAfterMsg($message, $location)
+{
+  Notify($message);
+  echo "<SCRIPT>window.location = '$location';</SCRIPT>";
 }
 ?>

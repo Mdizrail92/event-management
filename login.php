@@ -13,15 +13,61 @@
     <link rel="stylesheet" href="css/login.css">
     <title>CSI-SAKEC</title>
 </head>
-
+<?php
+require_once 'requirements.php';
+?>
 <body>
+         <!-- Login starts -->
+
+         <div class="form-container sign-in-container">
+            <!-- Login PHP -->
+                                       <?php
+                if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['loginbtn'])) {
+                    unset($_POST['loginbtn']);
+                    if (isset($_SESSION['email'])) {
+                        echo "<div class='alert alert-danger'>
+                    <strong>Error!</strong> You are already logged \n Please log out before logging to another account.
+                    </div>";
+                    } else if (!(empty($_POST['emailid']) || empty($_POST['password']))) {
+                        $username = $_POST['emailid'];
+                        $password = $_POST['password'];
+                        $sql = "SELECT `email_id`, `password`,`name` FROM `ipr_users` WHERE `email_id`= '$username'";
+                        $query = mysqli_query($conn, $sql);
+                        $count = mysqli_num_rows($query);
+                        if ($count) {
+                            $rows = mysqli_fetch_assoc($query);
+                            if ($rows['password'] == $password) {
+                                $_SESSION['email'] = $username;
+                                $_SESSION['user_name']=$rows['name'];
+                                RedirectAfterMsg('Login Successfull','index.php');
+                            } else {
+                                echo "<div class='alert alert-danger'>
+                        <strong>Error!</strong> Invalid Password.
+                        </div>";
+                            }
+                        } else {
+                            echo "<div class='alert alert-danger'>
+                            <strong>Error!</strong> Invalid credentials <br> Account Does not exist .
+                            </div>";
+                        }
+                    } else {
+                        echo "<div class='alert alert-danger'>
+                <strong>Error!</strong> inputs empty found.
+                </div>";
+                    }
+                }
+            
+                ?>
+
+
+
     <div class="container text-center">
 
         <div class="spacer" style="height:50px;"></div>
         <div id="user-login">
             <p class="login"><b>USER LOGIN</b></br></br><i class="fas fa-user-circle" style="font-size:80px;"></i></p>
             </br>
-            <form action="connect.php" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
                 <i class="far fa-user-circle" style="font-size:30px;"></i>
 
                 <input data-toggle="tooltip" data-placement="bottom" title="your username" id="text" type="text"
@@ -34,9 +80,7 @@
                 <button type="submit" value="submit" class="btn btn-primary">Login<iclass="fas fa-sign-in-alt"></i></button>
             </form>
             </br></br>
-            <p><a style="color: rgb(168, 192, 212);"
-                    href="https://accounts.google.com/signin/v2/usernamerecovery?service=accountsettings&continue=https%3A%2F%2Fmyaccount.google.com%2F%3Futm_source%3Dsign_in_no_continue&csig=AF-SEnbuzOrFBQ0Nde_m%3A1579977852&flowName=GlifWebSignIn&flowEntry=AddSession&cid=1&TL=APDPHBC2MRpl-R5q7j6Mu5WVTPXBuWVlJ8aCdDfzDHA3Z3kp4CY2XxFFDdoMgGqJ ">Forgot
-                    password</a></p>
+            <p>Don't have an account</p> <br>
             <p><a style="color: rgb(168, 192, 212);" href="signup.html">Sign Up</a></p>
            
         </div>

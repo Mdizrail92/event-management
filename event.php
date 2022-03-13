@@ -12,11 +12,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    	<link rel="stylesheet" href="css/event.css">
 	<title>Event</title>
+
+  <?php
+require_once 'requirements.php';
+?>
+
+
+
 </head>
 <body>
+
+<?php
+  // fetching from event table
+  $sql = 'SELECT * FROM `event` WHERE `id`= 1';
+  $query = mysqli_query($conn, $sql);
+  if (!mysqli_num_rows($query)) {
+    echo '<h3>No Records Found</h3>';
+  } else {
+    $event_row = mysqli_fetch_assoc($query);
+  }
+
+  ?>
+
+
+<?php
+            // fetching from coordinator table
+  $sql = 'SELECT * FROM `ipr_event_coordinator` WHERE `event_id`= 1';
+  $query = mysqli_query($conn, $sql);
+  if (!mysqli_num_rows($query)) {
+    echo '<h3>No Records Found</h3>';
+  } else {
+    $cordinator_row = mysqli_fetch_assoc($query);
+   }
+
+?>
+
+
+
+
+
 	<div class="spacer" style="height:20px;"></div>
     <div class="container ">
-            <h1 >CSI-SAKEC Outbound</h1>
+            <h1 ><?php echo $event_row['title']; ?></h1>
             <div class="spacer" style="height:20px;"></div>
 <img class="main-img" src="images/event-main.jpg" alt="">
 <div class="spacer" style="height:35px;"></div>
@@ -24,17 +61,17 @@
 <div class="event-header">
     <div class="spacer" style="height:20px;"></div>
     <h2><span id="demo" style="color: rgb(145, 0, 0);">8 </span><span style="color: rgb(120 134 5)s;">Days <span style="color: rgb(0, 99, 16);">Go</span></h2>
-<h1>Largest Outbound event</h1>
-<h4><span style="color: #a10f95;">21 September</span> 2020, <span style="color: rgb(173, 173, 0);">3 p.m</span> Onwads</h4>
+<h1><?php echo $event_row['title']; ?></h1>
+<h4><span style="color: #a10f95;"><?php echo $event_row['date']; ?> <span style="color: rgb(173, 173, 0);"><?php echo $event_row['from_time']; ?></span> to <span style="color: rgb(173, 173, 0);"><?php echo $event_row['to_time']; ?></span></h4>
 <div class="spacer" style="height:20px;"></div>
-<button action="" type="button" class="btn btn-primary">Register Now</button>
+<a href="" action="" type="button" class="btn btn-primary">Register Now</a>
 
 
 <div class="spacer" style="height:40px;"></div>
 </div>
 <div class="row">
     <div class="spacer" style="height:40px;"></div>
-    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit consectetur ducimus veniam, magni vel soluta iste officiis nisi, repellendus porro asperiores itaque pariatur eius voluptatum beatae nemo et aut impedit.</p>
+    <p class="description"><?php echo $event_row['description']; ?></p>
 </div>
 
 <div class="spacer" style="height:90px;"></div>
@@ -45,8 +82,7 @@
         <div class="know-more">
 <h3><b style="color: #941616;">Registration Fees</b>  <i class="fas fa-dollar-sign"></i></h3>
 <div class="spacer" style="height:20px;"></div>
-<p>CSI Members – Rs.2350<br>
-    Non-CSI Members – Rs.2500</p>
+<p>Fess – <?php echo $event_row['fees']; ?><br>
     <div class="spacer" style="height:50px;"></div>
     <hr class="supp1">
   <div class="spacer" style="height:50px;"></div>         
@@ -56,10 +92,7 @@
 <p><b>Contact:</b>
 <br>
 <br>
-    Ishika Diwan - 8879524037<br>
-
-    Dhawal Shah - 8689916000<br>
-    Kedar Ayare - 8698457213
+<?php echo $event_row['coordinator_name']; ?> - <?php echo $event_row['coordinator_number']; ?><br>
 </p>
 </div>
     </div>
@@ -85,58 +118,33 @@
   <div class="card-body card-body-cascade text-center">
 
     <!-- Title -->
-    <h4 class="card-title"><strong>Billy Coleman</strong></h4>
+    <h4 class="card-title"><strong><?php echo $event_row['speaker_name']; ?></strong></h4>
     <!-- Subtitle -->
-    <h6 class="font-weight-bold indigo-text py-2">Web developer</h6>
+    <h6 class="font-weight-bold indigo-text py-2"><?php echo $event_row['speaker_description']; ?></h6>
     <!-- Text -->
-    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae.
-      Facere modi sunt, quod quibusdam.
+    <p class="card-text">
+      <?php echo $event_row['speaker_description']; ?>
     </p>
     <div class="social-sites">
 					
    <a href=""><img class="social" src="images/instagram (1).png" alt="instagram"></a>  
    <a href=""><img class="social"  src="images/linkedin1.png" alt="linkedin"></a>
-   <a href=""> <img class="social"  src="images/facebook.png" alt="facebook"></a>
-   
-
-     
-   
-     
+   <a href=""> <img class="social"  src="images/facebook.png" alt="facebook"></a>  
       </div>
-   
-     
-
-  </div>
+    </div>
     </div>
 </div>
 </div>
-
-
-
     </div>
     </div>
-<!-- 
-    <ul>
-      <li>
-        <a href="#">
-          <i class="fab fa-facebook-f icon"></i>    </a>
-      </li>
-      <li>
-        <a href="#"><i class="fab fa-twitter icon"></i></a>
-      </li>
-      <li>
-        <a href="#"><i class="fab fa-linkedin-in icon"></i></a></li>
-        <li>
-          <a href="#"><i class="fab fa-google icon"></i></a></li>
-       
-    </ul> -->
+
     <div class="spacer" style="height:90px;"></div>
     <div class="container-fluid">
     <div class="copyright">
       <div class="spacer" style="height:8px;"></div>
      <a href="index.html"><i class="fas fa-home"></i></a> 
       <div class="spacer" style="height:10px;"></div>
-  <h5>Copyright &copy; CSI-SAKEC 2020-21 All Rights Reserved</h5>
+  <h5>Copyright &copy; Event- management 2021-22 All Rights Reserved</h5>
   <div class="spacer" style="height:5px;"></div>     
 
 </div>
@@ -148,32 +156,5 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
     </script>
 
-<script>
-  // Set the date we're counting down to
-  var countDownDate = new Date("Jan 10, 2021 15:37:25").getTime();
-  
-  // Update the count down every 1 second
-  var x = setInterval(function() {
-  
-    // Get today's date and time
-    var now = new Date().getTime();
-      
-    // Find the distance between now and the count down date
-    var distance = countDownDate - now;
-      
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-
-      
-    // Output the result in an element with id="demo"
-    document.getElementById("demo").innerHTML = days +" ";
-      
-    // If the count down is over, write some text 
-    if (distance < 0) {
-      clearInterval(x);
-      document.getElementById("demo").innerHTML = "EXPIRED";
-    }
-  }, 1000);
-  </script>
 </body>
 </html>
